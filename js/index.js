@@ -48,13 +48,6 @@ function count_orders(list) {
 
 // the Object which will hold the number of orders for each flavor
 const flavor_count = count_orders(user_input);
-/** My solution
- *  - Use a reducer function to map and return in a single step
- * const flavor_count = user_input.reduce((acc, flavor) => {
-	acc[flavor] = parseInt(acc[flavor] || 0) + 1;
-	return acc;
-}, {});
-*/
 
 console.log("Order counts", flavor_count);
 
