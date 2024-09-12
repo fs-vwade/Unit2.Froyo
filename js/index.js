@@ -37,6 +37,7 @@ console.log("User input (raw)", user_input);
 function count_orders(list) {
 	const orders = {};
 
+	/** logic for counting orders */
 	for (let i = 0; i < list.length; i++) {
 		const name = list[i];
 		orders[name] = parseInt(orders[name] || 0) + 1;
