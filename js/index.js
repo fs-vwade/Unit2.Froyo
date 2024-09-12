@@ -22,7 +22,7 @@ const flavors = [
 const user_input = prompt(
 	welcome_message,
 	// create a randomized list of default flavors
-	Array(5 + Math.round(Math.random() * 3))
+	Array(Math.round(4 * (1 + Math.random() * 2))) // between 4 and 12 items
 		.fill()
 		.map((e) => {
 			return flavors[Math.floor(Math.random() * flavors.length)];
@@ -32,15 +32,30 @@ const user_input = prompt(
 	.split(",")
 	.map((e) => e.trim());
 
-console.log(user_input);
+console.log("User input (raw)", user_input);
+
+function count_orders(list) {
+	const orders = {};
+
+	for (let i = 0; i < list.length; i++) {
+		const name = list[i];
+		orders[name] = parseInt(orders[name] || 0) + 1;
+	}
+
+	return orders;
+}
 
 // the Object which will hold the number of orders for each flavor
-const flavor_count = user_input.reduce((acc, flavor) => {
+const flavor_count = count_orders(user_input);
+/** My solution
+ *  - Use a reducer function to map and return in a single step
+ * const flavor_count = user_input.reduce((acc, flavor) => {
 	acc[flavor] = parseInt(acc[flavor] || 0) + 1;
 	return acc;
 }, {});
+*/
 
-console.log(flavor_count);
+console.log("Order counts", flavor_count);
 
 function create_page_elements() {
 	const div_result = document.createElement("div");
