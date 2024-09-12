@@ -1,10 +1,39 @@
+const welcome_message =
+	"Hello there, welcome to Froyo! Please enter a list of comma-separated froyo flavors below.\nHere are some suggestions: ";
+const flavors = [
+	"Vanilla",
+	"Chocolate",
+	"Strawberry",
+	"Coffee",
+	"Mango",
+	"Green Tea",
+	"Blueberry",
+	"Peach",
+	"Cookies and Cream",
+	"Pistachio",
+	"Salted Caramel",
+	"Mint Chocolate Chip",
+	"Banana",
+	"Coconut",
+	"Raspberry",
+];
+
 const user_input = prompt(
-	"Hello there, welcome to Froyo! Please enter a list of comma-separated froyo flavors below.",
-	"vanilla,vanilla,vanilla,strawberry,coffee,coffee"
-).split(",");
+	welcome_message,
+	// create a randomized list of default flavors
+	Array(5 + Math.round(Math.random() * 3))
+		.fill()
+		.map((e) => {
+			return flavors[Math.floor(Math.random() * flavors.length)];
+		})
+		.join(", ")
+)
+	.split(",")
+	.map((e) => e.trim());
 
 console.log(user_input);
 
+// the Object which will hold the number of orders for each flavor
 const flavor_count = user_input.reduce((acc, flavor) => {
 	acc[flavor] = (acc[flavor] || 0) + 1;
 	return acc;
