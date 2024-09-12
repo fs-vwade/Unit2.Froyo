@@ -25,7 +25,8 @@ const user_input = prompt(
 	Array(Math.round(4 * (1 + Math.random() * 2))) // between 4 and 12 items
 		.fill()
 		.map((e) => {
-			return flavors[Math.floor(Math.random() * flavors.length)];
+			const rand_idx = Math.floor(Math.random() * flavors.length);
+			return flavors[rand_idx];
 		})
 		.join(", ")
 )
