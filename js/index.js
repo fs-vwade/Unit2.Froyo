@@ -18,18 +18,16 @@ const flavors = [
 	"Coconut",
 	"Raspberry",
 ];
+const random_flavors = Array(Math.round(4 * (1 + Math.random() * 2))) // between 4 and 12 items
+	.fill()
+	.map((e) => {
+		// create a randomized list of default flavors
+		const rand_idx = Math.floor(Math.random() * flavors.length);
+		return flavors[rand_idx];
+	})
+	.join(", ");
 
-const user_input = prompt(
-	welcome_message,
-	// create a randomized list of default flavors
-	Array(Math.round(4 * (1 + Math.random() * 2))) // between 4 and 12 items
-		.fill()
-		.map((e) => {
-			const rand_idx = Math.floor(Math.random() * flavors.length);
-			return flavors[rand_idx];
-		})
-		.join(", ")
-)
+const user_input = prompt(welcome_message, random_flavors)
 	.split(",")
 	.map((e) => e.trim());
 
