@@ -35,19 +35,26 @@ console.log(user_input);
 
 // the Object which will hold the number of orders for each flavor
 const flavor_count = user_input.reduce((acc, flavor) => {
-	acc[flavor] = (acc[flavor] || 0) + 1;
+	acc[flavor] = parseInt(acc[flavor] || 0) + 1;
 	return acc;
 }, {});
 
 console.log(flavor_count);
 
-const div_result = document.createElement("div");
-div_result.innerHTML = "<h2>Flavor Counts:</h2>";
+function create_page_elements() {
+	const div_result = document.createElement("div");
+	const div_result_h2 = document.createElement("h2");
+	div_result_h2.innerText = "Flavor Counts: ";
+	div_result.append(div_result_h2);
 
-for (const [flavor, count] of Object.entries(flavor_count)) {
-	const p = document.createElement("p");
-	p.textContent = `${flavor}: ${count}`;
-	div_result.appendChild(p);
+	for (const [flavor, count] of Object.entries(flavor_count)) {
+		const p = document.createElement("p");
+		p.textContent = `${flavor}: ${count}`;
+		div_result.appendChild(p);
+	}
+
+	document.body.appendChild(div_result);
 }
 
-document.body.appendChild(div_result);
+// put info to page
+create_page_elements();
