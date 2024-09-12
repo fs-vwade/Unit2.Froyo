@@ -3,6 +3,7 @@ const welcome_message =
 const flavors = [
 	"Vanilla",
 	"Chocolate",
+	"Dark Chocolate",
 	"Strawberry",
 	"Coffee",
 	"Mango",
