@@ -11,3 +11,14 @@ const flavor_count = user_input.reduce((acc, flavor) => {
 }, {});
 
 console.log(flavor_count);
+
+const div_result = document.createElement("div");
+div_result.innerHTML = "<h2>Flavor Counts:</h2>";
+
+for (const [flavor, count] of Object.entries(flavor_count)) {
+	const p = document.createElement("p");
+	p.textContent = `${flavor}: ${count}`;
+	div_result.appendChild(p);
+}
+
+document.body.appendChild(div_result);
